@@ -27,10 +27,12 @@ body { font-family: 'Inter', -apple-system, sans-serif; background: #0a0a0a; col
 }
 
 .brand-title {
-    font-size: 3rem;
-    letter-spacing: 0.5rem;
+    font-size: 4rem;
+    letter-spacing: 0.3rem;
     font-weight: 300;
-    color: #709af5;
+    color: #000000;
+     font-family: "Danfo";
+     
 
 }
 
