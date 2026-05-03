@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Name | Lumina Studios</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+  /* --- Base Styles --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Inter', sans-serif; background: #0a0a0a; color: #fff; line-height: 1.6; overflow-x: hidden; }
+
+/* --- Navigation & Header --- */
+.back-nav {
+    padding: 2rem;
+    text-align: center;
+}
+.back-link {
+    text-decoration: none;
+    color: #888;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: 0.3s;
+}
+.back-link:hover { color: #fff; }
+
+.project-header {
+    padding: 4rem 2rem;
+    text-align: center;
+}
+.project-header h1 {
+    font-size: 2.5rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-weight: 200;
+}
+
+/* --- Gallery Layout --- */
+.gallery-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px 5rem;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+.gallery-item {
+    width: 100%;
+    background: #111;
+    overflow: hidden;
+}
+.gallery-item img, .gallery-item video {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+}
+.gallery-item.wide { grid-column: span 2; }
+
+/* --- Footer Section --- */
+.project-footer {
+    padding: 5rem 2rem;
+    text-align: center;
+    border-top: 1px solid #1a1a1a;
+}
+
+/* --- Modal Base Logic --- */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+.modal-overlay.is-open {
+    opacity: 1;
+    pointer-events: auto;
+}
+.modal-content {
+    background: #111;
+    padding: 3rem;
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid #333;
+    position: relative;
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+.modal-overlay.is-open .modal-content {
+    transform: translateY(0);
+}
+.close-modal {
+    position: absolute;
+    top: 1rem; right: 1rem;
+    background: none; border: none;
+    color: #fff; font-size: 2rem;
+    cursor: pointer;
+}
+
+/* --- Modal Form Section (The "Stacked" Fix) --- */
+.modal-form-section {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.modal-form-section h2 {
+    margin-bottom: 0.5rem;
+    letter-spacing: 2px;
+}
+.modal-form-section p {
+    color: #888;
+    margin-bottom: 1.5rem;
+    font-size: 0.9rem;
+}
+.modal-form-section form {
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    width: 100%;
+}
+.modal-form-section input, 
+.modal-form-section textarea {
+    width: 100%;
+    padding: 12px 15px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+}
+.submit-btn {
+    width: 100%;
+    padding: 15px;
+    background: #fff;
+    color: #000;
+    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.submit-btn:hover { background: #ccc; }
+
+/* --- Mobile Media Queries --- */
+@media (max-width: 768px) {
+    .gallery-container {
+        grid-template-columns: 1fr; /* Stack gallery images */
+    }
+    .gallery-item.wide { grid-column: span 1; }
+    
+    .project-header h1 { font-size: 1.8rem; }
+
+    /* Modal Mobile Fixes */
+    .modal-content {
+        width: 95%;
+        padding: 2.5rem 1.5rem;
+        max-height: 90vh;
+        overflow-y: auto; /* Scrollable if screen is tiny */
+        align-items: center;
+    }
+    .modal-form-section input, 
+    .modal-form-section textarea {
+        font-size: 16px; /* Prevents iOS auto-zoom */
+        padding: 16px;
+    }
+    .close-modal {
+        font-size: 2.5rem;
+    }
+}
+    </style>
+</head>
+<body>
+
+    <nav class="main-nav" style="position: bottom; width: 100%; display: block; background: transparent; border: none;">
+        <ul style="display: flex; justify-content: center; padding: 2rem; list-style: none;">
+            <li><a href="index.html" class="back-link">← Back to Home</a></li>
+        </ul>
+    </nav>
+
+    <header class="project-header">
+        <h1>Cinematic Series</h1>
+        <p>A collection of motion and still life work from 2025.</p>
+    </header>
+
+    <main class="gallery-container">
+        <!-- Up to 10 items -->
+        <div class="gallery-item wide">
+            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1200" alt="Work 1">
+        </div>
+        
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1554047031-1f9e2053915c?auto=format&fit=crop&w=800" alt="Work 2">
+        </div>
+
+        <div class="gallery-item">
+            <video autoplay muted loop playsinline>
+                <source src="https://assets.mixkit.co/videos/preview/mixkit-hand-holding-a-camera-under-the-sun-34547-large.mp4" type="video/mp4">
+            </video>
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=800" alt="Work 4">
+        </div>
+
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1542038784456-1ea8e935640e?auto=format&fit=crop&w=800" alt="Work 5">
+        </div>
+
+        <!-- Continue adding up to 10 items -->
+    </main>
+
+    <footer class="contact-section">
+    <!-- Changed from <a> to <button> for better accessibility -->
+    <button class="submit-btn open-modal-btn">Start Your Project</button>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    const modal = document.getElementById('contactModal');
+    const openBtn = document.querySelector('.open-modal-btn');
+    const closeBtn = document.querySelector('.close-modal');
+    const modalForm = document.getElementById('modal-contact-form');
+
+    // 1. Open Modal
+    // Change your footer button to use class="open-modal-btn"
+    openBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        modal.classList.add('is-open');
+        document.body.style.overflow = 'hidden'; // Stop scrolling background
+    });
+
+    // 2. Close Modal
+    const closeModal = () => {
+        modal.classList.remove('is-open');
+        document.body.style.overflow = 'auto'; // Re-enable scrolling
+    };
+
+    closeBtn.addEventListener('click', closeModal);
+
+    // 3. Close if clicking the darkened background
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModal();
+    });
+
+    // 4. Handle Form Submission
+    modalForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        alert('Thank you! Your project inquiry has been received.');
+        closeModal();
+        modalForm.reset();
+    });
+});
+    </script>
+
+<!-- The Modal Overlay -->
+<div id="contactModal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="close-modal" aria-label="Close">&times;</button>
+        
+        <section class="contact-section" style="padding: 2rem 0;">
+            <h2>Start Your Project</h2>
+            <p style="color: #888; margin-bottom: 1.5rem;">Tell us your vision, and let's make it happen.</p>
+            <form id="modal-contact-form" class="modalform">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Tell us about your project" rows="6" ></textarea>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
+            </form>
+        </section>
+    </div>
+</div>
+
+</body>
+</html>

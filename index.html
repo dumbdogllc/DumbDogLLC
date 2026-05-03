@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dumb Dog LLC.</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-photographer-taking-photos-of-a-landscape-34533-large.mp4" type="video/mp4">
+        </video>
+        
+        <div class="hero-overlay">
+            <h1 class="brand-title">Dumb Dog LLC.</h1>
+            <button class="menu-toggle" aria-label="Open Menu">
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <ul>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- Portfolio Section - Now with Links -->
+        <section id="portfolio" class="portfolio-grid">
+            
+            <a href="project-detail.html" class="item">
+                <img src="https://images.unsplash.com/photo-1493863641943-9b68992a8d07?auto=format&fit=crop&w=800&q=80" alt="Portrait Collection">
+                <div class="item-overlay">
+                    <span>View Portraits</span>
+                </div>
+            </a>
+
+            <a href="project-detail.html" class="item">
+                <img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=800&q=80" alt="Landscape Collection">
+                <div class="item-overlay">
+                    <span>View Landscapes</span>
+                </div>
+            </a>
+
+            <a href="project-detail.html" class="item">
+                <div class="video-placeholder">
+                    <p>Video Reel</p>
+                </div>
+                <div class="item-overlay">
+                    <span>Play Showreel</span>
+                </div>
+            </a>
+
+            <a href="project-detail.html" class="item">
+                <img src="https://images.unsplash.com/photo-1511317551201-9039169622d1?auto=format&fit=crop&w=800&q=80" alt="Wedding Collection">
+                <div class="item-overlay">
+                    <span>View Weddings</span>
+                </div>
+            </a>
+
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <h2>Work With Us</h2>
+            <form id="contact-form">
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Tell us about your project" rows="5"></textarea>
+                <button type="submit" class="submit-btn">Send Inquiry</button>
+            </form>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
